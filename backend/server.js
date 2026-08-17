@@ -137,6 +137,13 @@ app.post('/api/submit-emergency', (req, res) => {
 
 io.on('connection', (socket) => {
   console.log('A client connected:', socket.id);
+  
+  socket.on('MATCH_CONFIRMED', (data) => {
+    console.log('MATCH_CONFIRMED Event Received:', data);
+    // Broadcast match to all clients
+    io.emit('MATCH_CONFIRMED', data);
+  });
+
   socket.on('disconnect', () => {
     console.log('Client disconnected:', socket.id);
   });
