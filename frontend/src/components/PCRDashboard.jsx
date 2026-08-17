@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import IncidentMap from './IncidentMap';
 import { format } from 'date-fns';
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000';
+
 export default function PCRDashboard() {
   const [dashboardActive, setDashboardActive] = useState(false); // To ensure audio context can start
   const [activeIncident, setActiveIncident] = useState(null);
@@ -62,7 +64,7 @@ export default function PCRDashboard() {
   useEffect(() => {
     if (!dashboardActive) return;
 
-    const socket = io('http://localhost:3000');
+    const socket = io(BACKEND_URL);
     
     socket.on('new_emergency', (data) => {
       setIncomingAlert(data);

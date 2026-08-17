@@ -5,6 +5,8 @@ import { Video, ShieldAlert, Target, Image as ImageIcon, AlertOctagon, CheckCirc
 import { Link } from 'react-router-dom';
 import { format } from 'date-fns';
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000';
+
 export default function SurveillanceDashboard() {
   const [isModelLoaded, setIsModelLoaded] = useState(false);
   const [referenceDescriptor, setReferenceDescriptor] = useState(null);
@@ -37,7 +39,7 @@ export default function SurveillanceDashboard() {
 
   // Setup Socket
   useEffect(() => {
-    socketRef.current = io('http://localhost:3000');
+    socketRef.current = io(BACKEND_URL);
     
     socketRef.current.on('MATCH_CONFIRMED', (data) => {
       if (data.cameraId !== 'CAM-METRO-03') return; // In case we want to filter

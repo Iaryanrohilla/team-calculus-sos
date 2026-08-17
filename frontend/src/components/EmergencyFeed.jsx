@@ -3,12 +3,14 @@ import { io } from 'socket.io-client';
 import { AlertCircle, Clock, MapPin, User } from 'lucide-react';
 import { formatDistanceToNow } from 'date-fns';
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000';
+
 export default function EmergencyFeed() {
   const [emergencies, setEmergencies] = useState([]);
 
   useEffect(() => {
     // Connect to backend Socket.io
-    const socket = io('http://localhost:3000');
+    const socket = io(BACKEND_URL);
 
     socket.on('new_emergency', (data) => {
       setEmergencies(prev => [data, ...prev]);

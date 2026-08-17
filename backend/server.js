@@ -103,7 +103,7 @@ app.post('/api/process-document', upload.single('document'), async (req, res) =>
 
     res.json({
       success: true,
-      watermarkedUrl: `http://localhost:3000/watermarked/wm_${req.file.filename}`,
+      watermarkedUrl: `${req.protocol}://${req.get('host')}/watermarked/wm_${req.file.filename}`,
       extractedData: {
         rawText: text,
         name: extractedName,

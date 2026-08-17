@@ -2,6 +2,8 @@ import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import { Upload, Camera, FileText, AlertTriangle, CheckCircle, Loader2 } from 'lucide-react';
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000';
+
 export default function IntakeForm() {
   const [formData, setFormData] = useState({
     fullName: '',
@@ -42,7 +44,7 @@ export default function IntakeForm() {
 
     setIsProcessingDocument(true);
     try {
-      const response = await axios.post('http://localhost:3000/api/process-document', uploadData, {
+      const response = await axios.post(`${BACKEND_URL}/api/process-document`, uploadData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
@@ -72,7 +74,7 @@ export default function IntakeForm() {
     setIsSubmitting(true);
 
     try {
-      await axios.post('http://localhost:3000/api/submit-emergency', {
+      await axios.post(`${BACKEND_URL}/api/submit-emergency`, {
         profileData: formData,
         watermarkedUrl: watermarkedUrl || preview, // Fallback to raw if processing failed
         timestamp: new Date().toISOString()
