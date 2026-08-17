@@ -5,7 +5,7 @@ import { Video, ShieldAlert, Target, Image as ImageIcon, AlertOctagon, CheckCirc
 import { Link } from 'react-router-dom';
 import { format } from 'date-fns';
 
-const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000';
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'https://32f0fb5d05ce89.lhr.life';
 
 export default function SurveillanceDashboard() {
   const [isModelLoaded, setIsModelLoaded] = useState(false);

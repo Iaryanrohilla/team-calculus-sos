@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import IncidentMap from './IncidentMap';
 import { format } from 'date-fns';
 
-const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000';
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'https://32f0fb5d05ce89.lhr.life';
 
 export default function PCRDashboard() {
   const [dashboardActive, setDashboardActive] = useState(false); // To ensure audio context can start

@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import { Upload, Camera, FileText, AlertTriangle, CheckCircle, Loader2 } from 'lucide-react';
 
-const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000';
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'https://32f0fb5d05ce89.lhr.life';
 
 export default function IntakeForm() {
   const [formData, setFormData] = useState({
