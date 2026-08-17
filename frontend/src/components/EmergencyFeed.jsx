@@ -10,7 +10,7 @@ export default function EmergencyFeed() {
 
   useEffect(() => {
     // Connect to backend Socket.io
-    const socket = io(BACKEND_URL);
+    const socket = io(BACKEND_URL, { transports: ['websocket', 'polling'] });
 
     socket.on('new_emergency', (data) => {
       setEmergencies(prev => [data, ...prev]);

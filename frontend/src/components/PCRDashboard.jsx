@@ -64,7 +64,7 @@ export default function PCRDashboard() {
   useEffect(() => {
     if (!dashboardActive) return;
 
-    const socket = io(BACKEND_URL);
+    const socket = io(BACKEND_URL, { transports: ['websocket', 'polling'] });
     
     socket.on('new_emergency', (data) => {
       setIncomingAlert(data);

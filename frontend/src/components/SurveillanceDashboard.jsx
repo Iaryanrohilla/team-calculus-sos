@@ -39,7 +39,7 @@ export default function SurveillanceDashboard() {
 
   // Setup Socket
   useEffect(() => {
-    socketRef.current = io(BACKEND_URL);
+    socketRef.current = io(BACKEND_URL, { transports: ['websocket', 'polling'] });
     
     socketRef.current.on('MATCH_CONFIRMED', (data) => {
       if (data.cameraId !== 'CAM-METRO-03') return; // In case we want to filter
